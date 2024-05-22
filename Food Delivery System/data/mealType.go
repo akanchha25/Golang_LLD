@@ -6,6 +6,7 @@ type MealType int
 
 // Constants representing the MealType enum
 const (
-	VEG MealType = iota
+	MealTypeUnset MealType = iota
+	VEG 
 	NON_VEG
 )

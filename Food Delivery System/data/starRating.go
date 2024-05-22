@@ -3,11 +3,12 @@ package data
 type StarRating int
 
 const (
-    ONE   StarRating = 1
-    TWO   StarRating = 2
-    THREE StarRating = 3
-    FOUR  StarRating = 4
-    FIVE  StarRating = 5
+    StarRatingUnset StarRating = iota // Represents an unset or default value
+    ONE
+    TWO
+    THREE
+    FOUR
+    FIVE
 )
 
 func (s StarRating) GetVal() int {

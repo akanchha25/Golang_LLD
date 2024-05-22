@@ -21,5 +21,10 @@ func (f MealTypeFilter) Filter(foodItem data.FoodItem) bool {
 
 }
 
-// Assert that MealTypeFilter implements FoodItemFilter interface.
-var _ FoodItemFilter = (*MealTypeFilter)(nil)
+// Filter checks if the Restaurant has the specified MealType.
+func (f MealTypeFilter) RestaurantFilteration(restaurant data.Restaurant) bool {
+	return restaurant.MealType == f.mealType
+}
+
+// // Assert that MealTypeFilter implements FoodItemFilter interface.
+// var _ FoodItemFilter = (*MealTypeFilter)(nil)

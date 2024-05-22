@@ -27,5 +27,17 @@ func (f CuisineTypeFilter) Filter(foodItem data.FoodItem) bool {
 	return false
 }
 
+func (f CuisineTypeFilter) RestaurantFilteration(restaurant data.Restaurant) bool {
+	cuisines := restaurant.GetCuisineType()
+	for _, cuisineType := range f.cuisineTypes {
+		for _, cuisine := range cuisines {
+			if(cuisine == cuisineType){
+				return true
+			} 
+		}
+	}
+	return false
+}
+
 // Assert that CuisineTypeFilter implements FoodItemFilter interface
-var _ FoodItemFilter = (*CuisineTypeFilter)(nil)
+// var _ FoodItemFilter = (*CuisineTypeFilter)(nil)

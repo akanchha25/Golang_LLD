@@ -37,11 +37,11 @@ func (api *FoodItemSearcherAPI) SearchFoodItems(foodItemName string, mealType da
 }
 
 // Helper function to check if a CuisineType is in a slice of CuisineType
-func containsCuisine(cuisines []data.CuisineType, cuisine data.CuisineType) bool {
-    for _, c := range cuisines {
-        if c == cuisine {
-            return true
-        }
-    }
-    return false
-}
+// func containsCuisine(cuisines []data.CuisineType, cuisine data.CuisineType) bool {
+//     for _, c := range cuisines {
+//         if c == cuisine {
+//             return true
+//         }
+//     }
+//     return false
+// }

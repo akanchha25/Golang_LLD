@@ -17,4 +17,8 @@ func (f StarRatingFilter) Filter(foodItem data.FoodItem) bool {
 	return foodItem.GetStarRating().GetVal() >= int(f.starRate.GetVal())
 }
 
-var _ FoodItemFilter = (*StarRatingFilter)(nil)
+func (f StarRatingFilter) RestaurantFilteration(restaurant data.Restaurant) bool {
+	return restaurant.GetStarRating().GetVal() >= f.starRate.GetVal()         
+}  
+
+// var _ FoodItemFilter = (*StarRatingFilter)(nil)
