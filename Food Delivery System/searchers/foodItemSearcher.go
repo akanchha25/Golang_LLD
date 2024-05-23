@@ -36,3 +36,9 @@ func (searcher *FoodItemSearcher) Search(foodItemName string, filters []filters.
 
 	return foodItems, nil
 }
+
+func (searcher *FoodItemSearcher) SearchById(id int) (data.FoodItem, error) {
+	var foodItem data.FoodItem
+
+	return foodItem, nil
+}

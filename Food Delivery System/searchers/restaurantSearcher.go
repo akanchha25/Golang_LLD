@@ -41,3 +41,10 @@ func (s *RestaurantSearcher) Search(restaurantName string, filterList []filters.
 
 	return restaurants
 }
+
+
+func (s *RestaurantSearcher) SearchById(id int) (data.Restaurant, error) {
+	var restaurant data.Restaurant
+
+	return restaurant, nil
+}
