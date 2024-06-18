@@ -2,7 +2,6 @@ package apis
 
 import (
 	"errors"
-	"food_delivery_system/data"
 	"food_delivery_system/manager"
 	"food_delivery_system/searchers"
 )
