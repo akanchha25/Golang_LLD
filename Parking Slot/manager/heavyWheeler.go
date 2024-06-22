@@ -1,8 +1,12 @@
 package manager
 
+import (
+	"parking_slot_design/data"
+)
+
 type HeavyWheelerManager struct {}
 
-func (h *HeavyWheelerManager) GetParkingSpots() [] ParkingSpot {
+func (h *HeavyWheelerManager) GetParkingSpots() [] data.ParkingSpot {
 	return nil
 }
 
