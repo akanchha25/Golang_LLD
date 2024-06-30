@@ -27,8 +27,3 @@ func (p *ParkingFeeProcessor) ProcessParkingFees(ticket *data.Ticket, paymentPro
 	return paymentProcessor.ExecutePayment(), nil
 }
 
-// PaymentProcessor is an interface for processing payments.
-type PaymentProcessor interface {
-	GetAmount() float64
-	ExecutePayment() bool
-}
