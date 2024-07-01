@@ -1,30 +1,22 @@
 package payment
 
-import "sync"
 
-var (
-	paymentFactory *PaymentProcessorFactory
-	once sync.Once
-)
-
+// PaymentProcessorFactory provides methods to get different payment processors
 type PaymentProcessorFactory struct{}
 
-func GetPaymentProcessorFactory() *PaymentProcessorFactory {
-	once.Do(func() {
-		paymentFactory = &PaymentProcessorFactory{}
-	})
-	return paymentFactory
+func NewPaymentProcessorFactory() *PaymentProcessorFactory {
+	return &PaymentProcessorFactory{}
 }
 
-func (p *PaymentProcessorFactory) GetPaymentProcessor(paymentMode PaymentMode) *PaymentProcessor {
-	var paymentProcessor PaymentProcessor
-
-	switch paymentMode {
-	case CASH:
-		paymentProcessor = &CashPaymentProcessor{}
-	case CARD:
-		paymentProcessor = &CardPaymentProcessor{}	
+func (f *PaymentProcessorFactory) GetCardBasedPaymentProcessor(amount float64, cardDetails CardDetails) PaymentProcessor {
+	return &CardPaymentProcessor{
+		Amount:      amount,
+		CardDetails: cardDetails,
 	}
+}
 
-	return &paymentProcessor
+func (f *PaymentProcessorFactory) GetCashBasedPaymentProcessor(amount float64) PaymentProcessor {
+	return &CashPaymentProcessor{
+		Amount: amount,
+	}
 }
