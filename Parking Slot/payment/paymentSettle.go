@@ -20,6 +20,7 @@ func NewPaymentSettle(paymentMode PaymentMode, paymentDetails map[string]string,
 }
 
 func (s *PaymentSettle) GetPaymentSettle(paymentMode PaymentMode, paymentDetails map[string]string, amount float64) (PaymentProcessor, error) {
+	paymentProcessorFactory := NewPaymentProcessorFactory()
 
 	var paymentProcessor PaymentProcessor
 	switch paymentMode {
@@ -29,9 +30,9 @@ func (s *PaymentSettle) GetPaymentSettle(paymentMode PaymentMode, paymentDetails
 			Pin:        parsePin(paymentDetails["PIN"]),
 			CardNumber: paymentDetails["CARD_NUMBER"],
 		}
-		paymentProcessor = NewCardPaymentProcessor(amount, cardDetails)
+		paymentProcessor = paymentProcessorFactory.GetCardBasedPaymentProcessor(amount, cardDetails)
 	case CASH:
-		paymentProcessor = NewCashPaymentProcessor(amount)
+		paymentProcessor = paymentProcessorFactory.GetCashBasedPaymentProcessor(amount)
 	default:
 		return nil, errors.New("unsupported payment mode") // Correctly return nil for the first value
 	}
